@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Django на METANIT.COM</title>
-    <meta charset="utf-8" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Список задач</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    #sortable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 60%;
+    }
+    #sortable li {
+        margin: 0 3px 3px 3px;
+        padding: 0.4em;
+        padding-left: 1.5em;
+        font-size: 1.4em;
+        height: 18px;
+    }
+    #sortable li span {
+        position: absolute;
+        margin-left: -1.3em;
+    }
+</style>
 </head>
 <body>
-    <h2>Hello METANIT.COM</h2>
+
+<h2>Список задач</h2>
+
+<ul id="sortable">
+    <li class="ui-state-default" data-id="1">Задача 1<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+    <li class="ui-state-default" data-id="2">Задача 2<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+    <li class="ui-state-default" data-id="3">Задача 3<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    $( function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    } );
+</script>
+
 </body>
 </html>
