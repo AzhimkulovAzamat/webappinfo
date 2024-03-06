@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Список задач</title>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<style>
-    #sortable {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        width: 60%;
-    }
-    #sortable li {
-        margin: 0 3px 3px 3px;
-        padding: 0.4em;
-        padding-left: 1.5em;
-        font-size: 1.4em;
-        height: 18px;
-    }
-    #sortable li span {
-        position: absolute;
-        margin-left: -1.3em;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .sortable-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sortable-item {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: grab;
+        }
+        .sortable-item:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Список задач</h2>
+<h2>Sortable List</h2>
 
-<ul id="sortable">
-    <li class="ui-state-default" data-id="1">Задача 1<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
-    <li class="ui-state-default" data-id="2">Задача 2<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
-    <li class="ui-state-default" data-id="3">Задача 3<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+<ul class="sortable-list" id="sortable-list">
+    <!-- Data will be dynamically added here -->
 </ul>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
-    $( function() {
-        $( "#sortable" ).sortable();
-        $( "#sortable" ).disableSelection();
-    } );
+    // Sample data
+    const data = [
+        {name: "Task 1", date_start: "2024-03-01", date_finish: "2024-03-05", priority_name: "High", time_estimate: "3 days"},
+        {name: "Task 2", date_start: "2024-03-02", date_finish: "2024-03-07", priority_name: "Medium", time_estimate: "5 days"},
+        {name: "Task 3", date_start: "2024-03-03", date_finish: "2024-03-09", priority_name: "Low", time_estimate: "7 days"}
+    ];
+
+    // Function to create list items from data
+    function createListItems(data) {
+        const list = document.getElementById("sortable-list");
+        list.innerHTML = ""; // Clear existing items
+
+        data.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.className = "sortable-item";
+            listItem.innerHTML = `
+                <strong>${item.name}</strong> - 
+                Start: ${item.date_start}, 
+                Finish: ${item.date_finish}, 
+                Priority: ${item.priority_name}, 
+                Estimate: ${item.time_estimate}
+            `;
+            list.appendChild(listItem);
+        });
+    }
+
+    // Initialize SortableJS
+    const sortable = new Sortable(document.getElementById("sortable-list"), {
+        animation: 150,
+        onEnd: function (evt) {
+            // Update data order after dragging
+            const item = data.splice(evt.oldIndex, 1)[0];
+            data.splice(evt.newIndex, 0, item);
+        }
+    });
+
+    // Initialize list with sample data
+    createListItems(data);
 </script>
 
 </body>
