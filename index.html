@@ -41,71 +41,163 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
     // Sample data
-    const data = [
-        {
-            'id': '86enmz9cu',
-            'name': 'Задача 2',
-            'date_start': 1709521200000,
-            'date_finish': 1709640000000,
-            'priority_name': 'urgent',
-            'time_estimate': 23400000
-        },
-        {
-            'id': '86enmz9f0',
-            'name': 'Задача 4',
-            'date_start': 1709607600000,
-            'date_finish': 1709640000000,
-            'priority_name': 'high',
-            'time_estimate': 3600000
-        },
-        {
-            'id': '86enmz9e7',
-            'name': 'Задача  5',
-            'date_start': 1709607600000,
-            'date_finish': 1709640000000,
-            'priority_name': 'high',
-            'time_estimate': 14400000
-        },
-        {
-            'id': '86enmz9ef',
-            'name': 'Задача  6',
-            'date_start': 1709607600000,
-            'date_finish': 1709726400000,
-            'priority_name': 'high',
-            'time_estimate': 18000000
-        },
-        {
-            'id': '86enmz9dp',
-            'name': 'Задача 8l',
-            'date_start': 1709694000000,
-            'date_finish': 1709812800000,
-            'priority_name': 'normal',
-            'time_estimate': 10800000
-        },
-        {
-            'id': '86enhmfqv',
-            'name': 'Отредактировать рабочие профили. ',
-            'date_start': 1709780400000,
-            'date_finish': 1709812800000,
-            'priority_name': 'low',
-            'time_estimate': 1800000
-        },
-        {
-            'id': '86enmz9d5',
-            'name': 'Задача 9l',
-            'date_start': 1709780400000,
-            'date_finish': 1709812800000,
-            'priority_name': 'low',
-            'time_estimate': 7200000
-        },
-        {
-            'id': '86enmz9er',
-            'name': 'Задача  10',
-            'date_start': 1709780400000,
-            'date_finish': 1709899200000,
-            'priority_name': 'high',
-            'time_estimate': 10800000
-        }];
+    const data = [{
+        'id': '86enq018c',
+        'name': 'Задача 1',
+        'priority': 1,
+        'time_estimate': 12600000,
+        'status': 'to do',
+        'date_start': 1709521200000,
+        'date_finish': 1709553600000,
+        'priority_name': 'urgent',
+        'priority_color': '🔴',
+        'list_name': 'Приоритет для Азамата',
+        'list_id': '901800681887'
+    }, {
+        'id': '86enmz9cu',
+        'name': 'Задача 2',
+        'priority': 1,
+        'time_estimate': 23400000,
+        'status': 'to do',
+        'date_start': 1709521200000,
+        'date_finish': 1709640000000,
+        'priority_name': 'urgent',
+        'priority_color': '🔴',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enq019m',
+        'name': 'Задача 3',
+        'priority': 2,
+        'time_estimate': 7200000,
+        'status': 'to do',
+        'date_start': 1709607600000,
+        'date_finish': 1709640000000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Приоритет для Азамата',
+        'list_id': '901800681887'
+    }, {
+        'id': '86enmz9f0',
+        'name': 'Задача 4',
+        'priority': 2,
+        'time_estimate': 3600000,
+        'status': 'to do',
+        'date_start': 1709694000000,
+        'date_finish': 1709726400000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enmz9e7',
+        'name': 'Задача  5',
+        'priority': 2,
+        'time_estimate': 14400000,
+        'status': 'to do',
+        'date_start': 1709694000000,
+        'date_finish': 1709726400000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enmz9ef',
+        'name': 'Задача  6',
+        'priority': 2,
+        'time_estimate': 18000000,
+        'status': 'to do',
+        'date_start': 1709694000000,
+        'date_finish': 1709812800000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enq01c1',
+        'name': 'Задача  7s',
+        'priority': 3,
+        'time_estimate': 10800000,
+        'status': 'to do',
+        'date_start': 1709780400000,
+        'date_finish': 1709899200000,
+        'priority_name': 'normal',
+        'priority_color': '🔵',
+        'list_name': 'Приоритет для Азамата',
+        'list_id': '901800681887'
+    }, {
+        'id': '86enmz9dp',
+        'name': 'Задача 8l',
+        'priority': 3,
+        'time_estimate': 10800000,
+        'status': 'to do',
+        'date_start': 1709866800000,
+        'date_finish': 1709899200000,
+        'priority_name': 'normal',
+        'priority_color': '🔵',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enhmfqv',
+        'name': 'Отредактировать рабочие профили. ',
+        'priority': 4,
+        'time_estimate': 1800000,
+        'status': 'to do',
+        'date_start': 1709866800000,
+        'date_finish': 1709899200000,
+        'priority_name': 'low',
+        'priority_color': '⚪️',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enmz9d5',
+        'name': 'Задача 9l',
+        'priority': 4,
+        'time_estimate': 7200000,
+        'status': 'to do',
+        'date_start': 1709866800000,
+        'date_finish': 1709985600000,
+        'priority_name': 'low',
+        'priority_color': '⚪️',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enmz9er',
+        'name': 'Задача  10',
+        'priority': 2,
+        'time_estimate': 10800000,
+        'status': 'to do',
+        'date_start': 1709953200000,
+        'date_finish': 1709985600000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Для Азамата',
+        'list_id': '901800378539'
+    }, {
+        'id': '86enqwvwf',
+        'name': 'Задача 11',
+        'priority': 1,
+        'time_estimate': 10800000,
+        'status': 'to do',
+        'date_start': 1709953200000,
+        'date_finish': 1710072000000,
+        'priority_name': 'urgent',
+        'priority_color': '🔴',
+        'list_name': 'Low Prio',
+        'list_id': '901800728035'
+    }, {
+        'id': '86enqwvyq',
+        'name': 'Задача 12',
+        'priority': 2,
+        'time_estimate': 14400000,
+        'status': 'to do',
+        'date_start': 1710039600000,
+        'date_finish': 1710072000000,
+        'priority_name': 'high',
+        'priority_color': '🟠',
+        'list_name': 'Low Prio',
+        'list_id': '901800728035'
+    }];
 
     // Function to create list items from data
     function createListItems(data) {
