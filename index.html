@@ -28,22 +28,11 @@
 </head>
 <body>
 
-<h2>Список задач</h2>
+<h2>Sortable List</h2>
 
-<ul id="sortable">
-    <li class="ui-state-default" data-id="1">Задача 1<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
-    <li class="ui-state-default" data-id="2">Задача 2<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
-    <li class="ui-state-default" data-id="3">Задача 3<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+<ul class="sortable-list" id="sortable-list">
+    <!-- Data will be dynamically added here -->
 </ul>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script>
-    $( function() {
-        $( "#sortable" ).sortable();
-        $( "#sortable" ).disableSelection();
-    } );
-</script>
 
 </body>
 </html>
