@@ -35,6 +35,46 @@
 </ul>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+<script>
+    // Sample data
+    const data = [
+        {name: "Task 1", date_start: "2024-03-01", date_finish: "2024-03-05", priority_name: "High", time_estimate: "3 days"},
+        {name: "Task 2", date_start: "2024-03-02", date_finish: "2024-03-07", priority_name: "Medium", time_estimate: "5 days"},
+        {name: "Task 3", date_start: "2024-03-03", date_finish: "2024-03-09", priority_name: "Low", time_estimate: "7 days"}
+    ];
+
+    // Function to create list items from data
+    function createListItems(data) {
+        const list = document.getElementById("sortable-list");
+        list.innerHTML = ""; // Clear existing items
+
+        data.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.className = "sortable-item";
+            listItem.innerHTML = `
+                <strong>${item.name}</strong> - 
+                Start: ${item.date_start}, 
+                Finish: ${item.date_finish}, 
+                Priority: ${item.priority_name}, 
+                Estimate: ${item.time_estimate}
+            `;
+            list.appendChild(listItem);
+        });
+    }
+
+    // Initialize SortableJS
+    const sortable = new Sortable(document.getElementById("sortable-list"), {
+        animation: 150,
+        onEnd: function (evt) {
+            // Update data order after dragging
+            const item = data.splice(evt.oldIndex, 1)[0];
+            data.splice(evt.newIndex, 0, item);
+        }
+    });
+
+    // Initialize list with sample data
+    createListItems(data);
+</script>
 
 </body>
 </html>
