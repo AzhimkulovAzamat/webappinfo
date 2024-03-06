@@ -92,18 +92,19 @@
     function evaluate_gantt(tickets) {
         const original = 21600000;
         const now = new Date();
-        const work_time = original;
-        const monday_date = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
+        let work_time = original;
+        const monday_date = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()+1);
         let day_of_month = 0;
 
         for (let i = 0; i < tickets.length; i++) {
             let new_date = new Date(monday_date);
             new_date.setDate(new_date.getDate() + day_of_month);
             const start_date = new_date.getTime();
-        
+            let finish_date = new_date.getTime()
+
             if (tickets[i].time_estimate <= work_time) {
                 new_date.setHours(18, 0, 0, 0);
-                const finish_date = new_date.getTime();
+                finish_date = new_date.getTime();
                 work_time -= tickets[i].time_estimate;
                 if (work_time <= 0) {
                     day_of_month += 1;
@@ -115,11 +116,11 @@
                 new_date.setDate(new_date.getDate() + day_of_month);
                 work_time = work_time - tickets[i].time_estimate + original;
                 new_date.setHours(18, 0, 0, 0);
-                const finish_date = new_date.getTime();
+                finish_date = new_date.getTime();
             }
 
-            tickets[i].start_date = start_date;
-            tickets[i].due_date = finish_date;
+            tickets[i].date_start = start_date;
+            tickets[i].date_finish = finish_date;
         }
         return tickets;
     }
