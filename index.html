@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Список задач</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .sortable-list {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
+
         .sortable-item {
             background-color: #f4f4f4;
             padding: 10px;
             margin-bottom: 5px;
             cursor: grab;
         }
+
         .sortable-item:hover {
             background-color: #ddd;
         }
@@ -33,19 +36,76 @@
 <ul class="sortable-list" id="sortable-list">
     <!-- Data will be dynamically added here -->
 </ul>
+<button id="apply">Применить</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
     // Sample data
     const data = [
-        {'id': '86enmz9cu', 'name': 'Задача 2', 'date_start': 1709521200000, 'date_finish': 1709640000000, 'priority_name': 'urgent', 'time_estimate': 23400000}, 
-        {'id': '86enmz9f0', 'name': 'Задача 4', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 3600000}, 
-        {'id': '86enmz9e7', 'name': 'Задача  5', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 14400000}, 
-        {'id': '86enmz9ef', 'name': 'Задача  6', 'date_start': 1709607600000, 'date_finish': 1709726400000, 'priority_name': 'high', 'time_estimate': 18000000}, 
-        {'id': '86enmz9dp', 'name': 'Задача 8l', 'date_start': 1709694000000, 'date_finish': 1709812800000, 'priority_name': 'normal', 'time_estimate': 10800000}, 
-        {'id': '86enhmfqv', 'name': 'Отредактировать рабочие профили. ', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 1800000}, 
-        {'id': '86enmz9d5', 'name': 'Задача 9l', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 7200000}, 
-        {'id': '86enmz9er', 'name': 'Задача  10', 'date_start': 1709780400000, 'date_finish': 1709899200000, 'priority_name': 'high', 'time_estimate': 10800000}];
+        {
+            'id': '86enmz9cu',
+            'name': 'Задача 2',
+            'date_start': 1709521200000,
+            'date_finish': 1709640000000,
+            'priority_name': 'urgent',
+            'time_estimate': 23400000
+        },
+        {
+            'id': '86enmz9f0',
+            'name': 'Задача 4',
+            'date_start': 1709607600000,
+            'date_finish': 1709640000000,
+            'priority_name': 'high',
+            'time_estimate': 3600000
+        },
+        {
+            'id': '86enmz9e7',
+            'name': 'Задача  5',
+            'date_start': 1709607600000,
+            'date_finish': 1709640000000,
+            'priority_name': 'high',
+            'time_estimate': 14400000
+        },
+        {
+            'id': '86enmz9ef',
+            'name': 'Задача  6',
+            'date_start': 1709607600000,
+            'date_finish': 1709726400000,
+            'priority_name': 'high',
+            'time_estimate': 18000000
+        },
+        {
+            'id': '86enmz9dp',
+            'name': 'Задача 8l',
+            'date_start': 1709694000000,
+            'date_finish': 1709812800000,
+            'priority_name': 'normal',
+            'time_estimate': 10800000
+        },
+        {
+            'id': '86enhmfqv',
+            'name': 'Отредактировать рабочие профили. ',
+            'date_start': 1709780400000,
+            'date_finish': 1709812800000,
+            'priority_name': 'low',
+            'time_estimate': 1800000
+        },
+        {
+            'id': '86enmz9d5',
+            'name': 'Задача 9l',
+            'date_start': 1709780400000,
+            'date_finish': 1709812800000,
+            'priority_name': 'low',
+            'time_estimate': 7200000
+        },
+        {
+            'id': '86enmz9er',
+            'name': 'Задача  10',
+            'date_start': 1709780400000,
+            'date_finish': 1709899200000,
+            'priority_name': 'high',
+            'time_estimate': 10800000
+        }];
 
     // Function to create list items from data
     function createListItems(data) {
@@ -56,7 +116,7 @@
             const startDay = getDayOfWeek(new Date(item.date_start).getDay());
             const finishDay = getDayOfWeek(new Date(item.date_finish).getDay());
             const timeEstimate = convertMillisToHoursAndMinutes(item.time_estimate);
-            
+
             const listItem = document.createElement("li");
             listItem.className = "sortable-item";
             listItem.innerHTML = `
@@ -93,7 +153,7 @@
         const original = 21600000;
         const now = new Date();
         let work_time = original;
-        const monday_date = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()+1);
+        const monday_date = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay() + 1);
         let day_of_month = 0;
 
         for (let i = 0; i < tickets.length; i++) {
@@ -138,6 +198,14 @@
 
     // Initialize list with sample data
     createListItems(data);
+</script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    let tg = window.Telegram.WebApp;
+    let apply = document.getElementById("apply")
+    apply.addEventListener("click", () => {
+        tg.sendData(JSON.stringify(data))
+    })
 </script>
 
 </body>
