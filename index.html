@@ -53,17 +53,32 @@
         list.innerHTML = ""; // Clear existing items
 
         data.forEach(item => {
+            const startDay = getDayOfWeek(new Date(item.date_start).getDay());
+            const finishDay = getDayOfWeek(new Date(item.date_finish).getDay());
+            const timeEstimate = convertMillisToHoursAndMinutes(item.time_estimate);
+            
             const listItem = document.createElement("li");
             listItem.className = "sortable-item";
             listItem.innerHTML = `
                 <strong>${item.name}</strong> - 
-                Start: ${item.date_start}, 
-                Finish: ${item.date_finish}, 
+                График: ${startDay} - ${finishDay},
                 Priority: ${item.priority_name}, 
-                Estimate: ${item.time_estimate}
+                Estimate: ${timeEstimate}
             `;
             list.appendChild(listItem);
         });
+    }
+
+    // Function to get day of the week from its numeric value (0-6)
+    function getDayOfWeek(day) {
+        const daysOfWeek = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+        return daysOfWeek[day];
+    }
+
+    function convertMillisToHoursAndMinutes(milliseconds) {
+        const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+        const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        return hours + "h " + minutes + "m";
     }
 
     // Initialize SortableJS
