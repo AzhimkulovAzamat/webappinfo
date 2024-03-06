@@ -37,7 +37,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
     // Sample data
-    const data = [{'id': '86enmz9cu', 'name': 'Задача 2', 'date_start': 1709521200000, 'date_finish': 1709640000000, 'priority_name': 'urgent', 'time_estimate': 23400000}, {'id': '86enmz9f0', 'name': 'Задача 4', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 3600000}, {'id': '86enmz9e7', 'name': 'Задача  5', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 14400000}, {'id': '86enmz9ef', 'name': 'Задача  6', 'date_start': 1709607600000, 'date_finish': 1709726400000, 'priority_name': 'high', 'time_estimate': 18000000}, {'id': '86enmz9dp', 'name': 'Задача 8l', 'date_start': 1709694000000, 'date_finish': 1709812800000, 'priority_name': 'normal', 'time_estimate': 10800000}, {'id': '86enhmfqv', 'name': 'Отредактировать рабочие профили. ', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 1800000}, {'id': '86enmz9d5', 'name': 'Задача 9l', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 7200000}, {'id': '86enmz9er', 'name': 'Задача  10', 'date_start': 1709780400000, 'date_finish': 1709899200000, 'priority_name': 'high', 'time_estimate': 10800000}];
+    const data = [
+        {'id': '86enmz9cu', 'name': 'Задача 2', 'date_start': 1709521200000, 'date_finish': 1709640000000, 'priority_name': 'urgent', 'time_estimate': 23400000}, 
+        {'id': '86enmz9f0', 'name': 'Задача 4', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 3600000}, 
+        {'id': '86enmz9e7', 'name': 'Задача  5', 'date_start': 1709607600000, 'date_finish': 1709640000000, 'priority_name': 'high', 'time_estimate': 14400000}, 
+        {'id': '86enmz9ef', 'name': 'Задача  6', 'date_start': 1709607600000, 'date_finish': 1709726400000, 'priority_name': 'high', 'time_estimate': 18000000}, 
+        {'id': '86enmz9dp', 'name': 'Задача 8l', 'date_start': 1709694000000, 'date_finish': 1709812800000, 'priority_name': 'normal', 'time_estimate': 10800000}, 
+        {'id': '86enhmfqv', 'name': 'Отредактировать рабочие профили. ', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 1800000}, 
+        {'id': '86enmz9d5', 'name': 'Задача 9l', 'date_start': 1709780400000, 'date_finish': 1709812800000, 'priority_name': 'low', 'time_estimate': 7200000}, 
+        {'id': '86enmz9er', 'name': 'Задача  10', 'date_start': 1709780400000, 'date_finish': 1709899200000, 'priority_name': 'high', 'time_estimate': 10800000}];
 
     // Function to create list items from data
     function createListItems(data) {
