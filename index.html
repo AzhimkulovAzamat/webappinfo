@@ -81,6 +81,49 @@
         return hours + "h " + minutes + "m";
     }
 
+    function evaluateGantt() {
+        // Call evaluate_gantt function passing current data
+        evaluate_gantt(data);
+
+        // Update list items after evaluation
+        createListItems(data);
+    }
+
+    function evaluate_gantt(tickets) {
+        const original = 21600000;
+        const now = new Date();
+        const work_time = original;
+        const monday_date = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
+        let day_of_month = 0;
+
+        for (let i = 0; i < tickets.length; i++) {
+            let new_date = new Date(monday_date);
+            new_date.setDate(new_date.getDate() + day_of_month);
+            const start_date = new_date.getTime();
+        
+            if (tickets[i].time_estimate <= work_time) {
+                new_date.setHours(18, 0, 0, 0);
+                const finish_date = new_date.getTime();
+                work_time -= tickets[i].time_estimate;
+                if (work_time <= 0) {
+                    day_of_month += 1;
+                    work_time += original;
+                }
+            } else {
+                day_of_month += 1;
+                new_date = new Date(monday_date);
+                new_date.setDate(new_date.getDate() + day_of_month);
+                work_time = work_time - tickets[i].time_estimate + original;
+                new_date.setHours(18, 0, 0, 0);
+                const finish_date = new_date.getTime();
+            }
+
+            tickets[i].start_date = start_date;
+            tickets[i].due_date = finish_date;
+        }
+        return tickets;
+    }
+
     // Initialize SortableJS
     const sortable = new Sortable(document.getElementById("sortable-list"), {
         animation: 150,
@@ -88,6 +131,7 @@
             // Update data order after dragging
             const item = data.splice(evt.oldIndex, 1)[0];
             data.splice(evt.newIndex, 0, item);
+            evaluateGantt();
         }
     });
 
