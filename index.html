@@ -40,185 +40,60 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 <script>
-    // Sample data
-    const data = [{
-        'id': '86enq018c',
-        'name': 'Задача 1',
-        'priority': 1,
-        'time_estimate': 12600000,
-        'status': 'to do',
-        'date_start': 1709521200000,
-        'date_finish': 1709553600000,
-        'priority_name': 'urgent',
-        'priority_color': '🔴',
-        'list_name': 'Приоритет для Азамата',
-        'list_id': '901800681887'
-    }, {
-        'id': '86enmz9cu',
-        'name': 'Задача 2',
-        'priority': 1,
-        'time_estimate': 23400000,
-        'status': 'to do',
-        'date_start': 1709521200000,
-        'date_finish': 1709640000000,
-        'priority_name': 'urgent',
-        'priority_color': '🔴',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enq019m',
-        'name': 'Задача 3',
-        'priority': 2,
-        'time_estimate': 7200000,
-        'status': 'to do',
-        'date_start': 1709607600000,
-        'date_finish': 1709640000000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Приоритет для Азамата',
-        'list_id': '901800681887'
-    }, {
-        'id': '86enmz9f0',
-        'name': 'Задача 4',
-        'priority': 2,
-        'time_estimate': 3600000,
-        'status': 'to do',
-        'date_start': 1709694000000,
-        'date_finish': 1709726400000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enmz9e7',
-        'name': 'Задача  5',
-        'priority': 2,
-        'time_estimate': 14400000,
-        'status': 'to do',
-        'date_start': 1709694000000,
-        'date_finish': 1709726400000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enmz9ef',
-        'name': 'Задача  6',
-        'priority': 2,
-        'time_estimate': 18000000,
-        'status': 'to do',
-        'date_start': 1709694000000,
-        'date_finish': 1709812800000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enq01c1',
-        'name': 'Задача  7s',
-        'priority': 3,
-        'time_estimate': 10800000,
-        'status': 'to do',
-        'date_start': 1709780400000,
-        'date_finish': 1709899200000,
-        'priority_name': 'normal',
-        'priority_color': '🔵',
-        'list_name': 'Приоритет для Азамата',
-        'list_id': '901800681887'
-    }, {
-        'id': '86enmz9dp',
-        'name': 'Задача 8l',
-        'priority': 3,
-        'time_estimate': 10800000,
-        'status': 'to do',
-        'date_start': 1709866800000,
-        'date_finish': 1709899200000,
-        'priority_name': 'normal',
-        'priority_color': '🔵',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enhmfqv',
-        'name': 'Отредактировать рабочие профили. ',
-        'priority': 4,
-        'time_estimate': 1800000,
-        'status': 'to do',
-        'date_start': 1709866800000,
-        'date_finish': 1709899200000,
-        'priority_name': 'low',
-        'priority_color': '⚪️',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enmz9d5',
-        'name': 'Задача 9l',
-        'priority': 4,
-        'time_estimate': 7200000,
-        'status': 'to do',
-        'date_start': 1709866800000,
-        'date_finish': 1709985600000,
-        'priority_name': 'low',
-        'priority_color': '⚪️',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enmz9er',
-        'name': 'Задача  10',
-        'priority': 2,
-        'time_estimate': 10800000,
-        'status': 'to do',
-        'date_start': 1709953200000,
-        'date_finish': 1709985600000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Для Азамата',
-        'list_id': '901800378539'
-    }, {
-        'id': '86enqwvwf',
-        'name': 'Задача 11',
-        'priority': 1,
-        'time_estimate': 10800000,
-        'status': 'to do',
-        'date_start': 1709953200000,
-        'date_finish': 1710072000000,
-        'priority_name': 'urgent',
-        'priority_color': '🔴',
-        'list_name': 'Low Prio',
-        'list_id': '901800728035'
-    }, {
-        'id': '86enqwvyq',
-        'name': 'Задача 12',
-        'priority': 2,
-        'time_estimate': 14400000,
-        'status': 'to do',
-        'date_start': 1710039600000,
-        'date_finish': 1710072000000,
-        'priority_name': 'high',
-        'priority_color': '🟠',
-        'list_name': 'Low Prio',
-        'list_id': '901800728035'
-    }];
+    let data = [{'id': '86enmz9cu', 'name': 'Задача 2', 'priority': 1, 'time_estimate': 21600000, 'status': 'to do', 'start_date': 1710104400000, 'due_date': 1710136800000, 'priority_name': 'urgent', 'priority_color': '🔴', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enq019m', 'name': 'Задача 3 блок без дедлайна', 'priority': 2, 'time_estimate': 7200000, 'status': 'to do', 'start_date': 1710190800000, 'due_date': 1710223200000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Приоритет для Азамата', 'list_id': '901800681887', 'depends_info': [{'available_start_time': 0, 'block_id': '86entwrxj', 'name': 'Блк без дедлайна'}]}, {'id': '86enmz9f0', 'name': 'Задача 4', 'priority': 2, 'time_estimate': 3600000, 'status': 'to do', 'start_date': 1710190800000, 'due_date': 1710223200000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enmz9e7', 'name': 'Задача  5', 'priority': 2, 'time_estimate': 14400000, 'status': 'to do', 'start_date': 1710190800000, 'due_date': 1710309600000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enmz9ef', 'name': 'Задача  6', 'priority': 2, 'time_estimate': 18000000, 'status': 'to do', 'start_date': 1710277200000, 'due_date': 1710309600000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enq01c1', 'name': 'Задача  7s', 'priority': 3, 'time_estimate': 10800000, 'status': 'to do', 'start_date': 1710363600000, 'due_date': 1710396000000, 'priority_name': 'normal', 'priority_color': '🔵', 'list_name': 'Приоритет для Азамата', 'list_id': '901800681887', 'depends_info': []}, {'id': '86enmz9dp', 'name': 'Задача 8l', 'priority': 3, 'time_estimate': 10800000, 'status': 'to do', 'start_date': 1710363600000, 'due_date': 1710396000000, 'priority_name': 'normal', 'priority_color': '🔵', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enq018c', 'name': 'Задача 1 блок с делайном', 'priority': 1, 'time_estimate': 12600000, 'status': 'to do', 'start_date': 1710450000000, 'due_date': 1710482400000, 'priority_name': 'urgent', 'priority_color': '🔴', 'list_name': 'Приоритет для Азамата', 'list_id': '901800681887', 'depends_info': [{'available_start_time': 1710331200000, 'block_id': '86ente3a9', 'name': 'Блокирующий с дедлайном'}, {'available_start_time': 1710374400000, 'block_id': '86entz09w', 'name': 'тест для Леры'}]}, {'id': '86enmz9d5', 'name': 'Задача 9l', 'priority': 4, 'time_estimate': 7200000, 'status': 'to do', 'start_date': 1710450000000, 'due_date': 1710482400000, 'priority_name': 'low', 'priority_color': '⚪️', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': []}, {'id': '86enmz9er', 'name': 'Задача  10', 'priority': 2, 'time_estimate': 10800000, 'status': 'to do', 'start_date': 1710450000000, 'due_date': 1710568800000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Для Азамата', 'list_id': '901800378539', 'depends_info': [{'available_start_time': 0, 'block_id': '86enmz9d5', 'name': 'Задача 9l'}, {'available_start_time': 0, 'block_id': '86enmz9ef', 'name': 'Задача  6'}]}, {'id': '86enqwvwf', 'name': 'Задача 11', 'priority': 1, 'time_estimate': 10800000, 'status': 'to do', 'start_date': 1710536400000, 'due_date': 1710568800000, 'priority_name': 'urgent', 'priority_color': '🔴', 'list_name': 'Low Prio', 'list_id': '901800728035', 'depends_info': []}, {'id': '86enqwvyq', 'name': 'Задача 12', 'priority': 2, 'time_estimate': 14400000, 'status': 'to do', 'start_date': 1710536400000, 'due_date': 1710655200000, 'priority_name': 'high', 'priority_color': '🟠', 'list_name': 'Low Prio', 'list_id': '901800728035', 'depends_info': []}];
 
     // Function to create list items from data
     function createListItems(data) {
         const list = document.getElementById("sortable-list");
         list.innerHTML = ""; // Clear existing items
 
-        data.forEach(item => {
-            const startDay = getDayOfWeek(new Date(item.date_start).getDay());
-            const finishDay = getDayOfWeek(new Date(item.date_finish).getDay());
+        for (dataIndex in data) {
+            item = data[dataIndex]
+            const startDay = getDayOfWeek(new Date(item.start_date).getDay());
+            const finishDay = getDayOfWeek(new Date(item.due_date).getDay());
             const timeEstimate = convertMillisToHoursAndMinutes(item.time_estimate);
+            let dependsOn = ``
+
+            for (dependIndex in item.depends_info) {
+                depend = item.depends_info[dependIndex]
+                var color = "000000"
+                if (item.start_date < depend.available_start_time) {
+                    color = "ff0000"
+                }
+                if (depend.available_start_time > 0) {
+                    readyTimeForBlock = getDayOfWeek(new Date(depend.available_start_time).getDay())
+                } else {
+                    readyTimeForBlock = 'Неопр'
+                    for (localIndex in data) {
+                        local = data[localIndex]
+                        if (depend.block_id === local.id) {
+                            readyTimeForBlock = getDayOfWeek(new Date(local.due_date).getDay())
+                            if (dataIndex < localIndex) {
+                                color = "ff0000"
+                            }
+                        }
+                    }
+                }
+                dependsOn += `
+                        <p>
+                        <span>_____${depend.name}</span>
+                        <span><strong><font color=${color}>Готовность: ${readyTimeForBlock}</font></strong></span>
+                        </p>
+                    `
+            }
 
             const listItem = document.createElement("li");
             listItem.className = "sortable-item";
             listItem.innerHTML = `
-                <strong>${item.name}</strong> - 
-                График: ${startDay} - ${finishDay},
-                Priority: ${item.priority_name}, 
-                Estimate: ${timeEstimate}
+                <p><strong>${item.priority_color} ${item.name}</strong></p>
+                <p>Лист: ${item.list_name}</p>
+                <p>Время: ${timeEstimate}</p>
+                <p>Сроки: ${startDay} - ${finishDay}</p>
+                <p>Блокирующие:</p>
+                ${dependsOn}
             `;
             list.appendChild(listItem);
-        });
+        }
     }
 
     // Function to get day of the week from its numeric value (0-6)
@@ -271,8 +146,8 @@
                 finish_date = new_date.getTime();
             }
 
-            tickets[i].date_start = start_date;
-            tickets[i].date_finish = finish_date;
+            tickets[i].start_date = start_date;
+            tickets[i].due_date = finish_date;
         }
         return tickets;
     }
@@ -293,11 +168,66 @@
 </script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+    // Function to send data to Django
+    function sendDataToDjango() {
+        // Create an AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/formation", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        const csrftoken = getCookie('csrftoken');
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        const params = getQueryParams()
+        const formation_id = params.formation_id
+        const object = {
+            'formation_id': Number(formation_id),
+            'data': data
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) { // Request completed
+                if (xhr.status === 200) { // Successful response
+                    const response = JSON.parse(xhr.responseText);
+                    const formation = response.formation.replace(/"/g, '').replace(/'/g, '"')
+                    data = JSON.parse(formation)
+                    evaluateGantt()
+                } else {
+                    console.error('Request failed with status:', xhr.status); // Log error for failed requests
+                }
+            }
+        };
+
+        // Send data to Django
+        xhr.send(JSON.stringify(object));
+    }
+
     let tg = window.Telegram.WebApp;
     let apply = document.getElementById("apply")
     apply.addEventListener("click", () => {
-        tg.sendData(JSON.stringify(data))
+        sendDataToDjango()
     })
+
+    function getQueryParams() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const params = {};
+        for (const [key, value] of queryParams.entries()) {
+            params[key] = value;
+        }
+        return params;
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 </script>
 
 </body>
